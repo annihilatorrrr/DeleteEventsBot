@@ -1,3 +1,5 @@
+import asyncio
+import time
 from pyrogram import Client, filters
 
 
@@ -7,6 +9,7 @@ async def delservice(delbot, msg):
     chat_member = await delbot.get_chat_member(msg.chat.id, "self")
     if chat_member.status == "administrator":
         if chat_member.can_delete_messages:
+            await asyncio.sleep(20)
             await msg.delete()
         else:
             await msg.reply(
